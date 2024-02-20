@@ -28,6 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_REDIRECT_URL = 'home'
+
 AUTH_USER_MODEL = 'admin_cinema.User'
 
 
@@ -40,12 +42,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 'stripe',
     'rest_framework',
     'authentication',
     'core',
     'cinema',
     'movie',
     'admin_cinema',
+    # 'UserProfile',
+    'event',
+    'ticket',
+    'checkout',
 ]
 
 MIDDLEWARE = [

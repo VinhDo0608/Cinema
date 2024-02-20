@@ -26,4 +26,5 @@ class RegisterSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         # Remove the 'password_confirm' field before creating the user
         validated_data.pop('password_confirm', None)
-        return User.objects.create_user(**validated_data)
+        request = self.context.get('request')
+        return User.objects.create_user(request=request, **validated_data)

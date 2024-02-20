@@ -20,5 +20,6 @@ class Room(BaseModel):
 class Seat(BaseModel):
     type_seat = models.SmallIntegerField(null=False, blank=False)
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
-
+    price = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
+    quantity = models.PositiveIntegerField(default=0)
 

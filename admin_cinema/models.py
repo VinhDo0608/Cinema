@@ -8,7 +8,7 @@ from django.db import models
 class UserManager(BaseUserManager):
 
 
-    def create_user(self, username, email, password=None):
+    def create_user(self,request, username, email, password=None):
 
         if username is None:
             raise TypeError('Users should have a username')
@@ -46,8 +46,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now_add=True)
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username']
+    USERNAME_FIELD = 'username'
+    # REQUIRED_FIELDS = ['username']
 
     objects = UserManager()
 

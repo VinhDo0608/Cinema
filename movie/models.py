@@ -1,5 +1,7 @@
 from django.db import models
 from core.models import BaseModel
+from django.utils import timezone
+from admin_cinema.models import User
 
 # Create your models here.
 class Category(BaseModel):
@@ -28,7 +30,14 @@ class Movie(BaseModel):
     actor = models.ForeignKey(Actor, on_delete=models.CASCADE)
     director = models.ForeignKey(Director, on_delete=models.CASCADE)
 
-class Comment():
-    movie = models.OneToOneField(Movie, on_delete=models.CASCADE)
-    content = models.TextField()
-    rating = models.FloatField()
+    def __str__(self):
+        return self.name
+
+class Comment(BaseModel):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)  # Đảm bảo bạn có một model Movie
+    text = models.TextField()
+    created_at = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return f'{self.user.username} - {self.movie.title} - {self.created_at}'
