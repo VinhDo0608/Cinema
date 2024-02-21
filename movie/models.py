@@ -27,7 +27,7 @@ class Movie(BaseModel):
     language = models.CharField(max_length=20, null=False, blank=False)
     trailer = models.FileField(verbose_name="Trailer", null=False, blank=False)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    actor = models.ForeignKey(Actor, on_delete=models.CASCADE)
+    actors = models.ManyToManyField(Actor)
     director = models.ForeignKey(Director, on_delete=models.CASCADE)
 
     def __str__(self):

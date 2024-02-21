@@ -45,6 +45,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now_add=True)
+    points = models.IntegerField(default=0)
 
     USERNAME_FIELD = 'username'
     # REQUIRED_FIELDS = ['username']

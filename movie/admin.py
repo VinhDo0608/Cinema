@@ -7,6 +7,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 class ActorAdmin(admin.ModelAdmin):
     list_display = ('name', 'status')
+    # filter_horizontal = ('actors',)  # Cho phép chọn nhiều diễn viên trong giao diện quản trị
 
 class DirectorAdmin(admin.ModelAdmin):
     list_display = ('name', 'status')
