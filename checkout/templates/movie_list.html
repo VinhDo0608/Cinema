@@ -1,0 +1,18 @@
+{% extends 'home.html' %}
+{% block content %}
+    <h2>Danh Sách Phim</h2>
+    <ul>
+        {% for movie in movies %}
+        <li>
+            <img src="{{ movie.image.url }}">
+            <p>{{ movie.name }}</p>
+            <a class="nav-link" href="{% url 'checkout:movie_detail' movie.id %}">
+                <i class="fas fa-info-circle"></i> Xem chi tiết
+            </a> 
+            <a class="nav-link" href="{% url 'checkout:reserve_ticket' %}">
+                <i class="fas fa-ticket-alt"></i> Đặt Vé
+            </a>    
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

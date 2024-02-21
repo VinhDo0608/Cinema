@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from rest_framework import generics, status, viewsets
 from .models import Movie, Actor, Category, Director
-from django.views import View
 from .serializers import MovieSerializer, ActorSerializer, CategorySerializer, DirectorSerializer
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -75,3 +74,5 @@ class DirectorListCreateView(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+

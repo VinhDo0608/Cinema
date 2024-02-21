@@ -72,4 +72,12 @@ def signin_api(request):
         serializer = UserSerializer(user)
         return Response(serializer.data)
     return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
+
+from rest_framework import generics
+from admin_cinema.models import User
+from .serializers import UserSerializer
+
+class UserListView(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
     

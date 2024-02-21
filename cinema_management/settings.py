@@ -14,7 +14,7 @@ import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'checkout:home'
 
 AUTH_USER_MODEL = 'admin_cinema.User'
 
@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'cinema',
     'movie',
     'admin_cinema',
-    # 'UserProfile',
+    'UserProfile',
     'event',
     'ticket',
     'checkout',
@@ -156,3 +156,8 @@ EMAIL_PORT=587
 EMAIL_USE_TLS=True
 EMAIL_HOST_USER='vinhgragas@gmail.com'
 EMAIL_HOST_PASSWORD='qido hnnm mhhe gimv'
+
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'UploadFiles')
+
+MEDIA_URL = '/UploadFiles/'

@@ -1,8 +1,8 @@
-{% extends 'base.html' %}
+{% extends 'home.html' %}
 
 {% block content %}
   <h2>Đặt Vé</h2>
-  <form method="post" action="{% url 'reserve_ticket' %}">
+  <form method="post" action="{% url 'checkout:reserve_ticket' %}">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Đặt Vé</button>

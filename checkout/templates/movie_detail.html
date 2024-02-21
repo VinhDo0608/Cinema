@@ -1,0 +1,13 @@
+{% extends 'home.html' %}
+
+{% block content %}
+    <img src="{{ movie.image.url }}">
+    <h2>{{ movie.name }}</h2>
+    <p><strong>Ngày Ra Mắt:</strong> {{ movie.release_date }}</p>
+    <p><strong>Diễn Viên:</strong> {{ movie.actors }}</p>
+    <p><strong>Đạo Diễn:</strong> {{ movie.director }}</p>
+    <p><strong>Tóm Tắt Nội Dung:</strong> {{ movie.description }}</p>
+    <a class="nav-link" href="{% url 'checkout:reserve_ticket' %}">
+        <i class="fas fa-ticket-alt"></i> Đặt Vé
+    </a>  
+{% endblock %}

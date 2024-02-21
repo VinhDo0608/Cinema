@@ -26,3 +26,21 @@ class Reservation(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.movie_id} - {self.event_id} - {self.date}"
+    
+    @classmethod
+    def create_reservation(cls, request, movie, event_id, date, payment_method):
+        # Lấy thông tin người dùng hiện tại từ request
+        current_user = request.user
+
+        # Tạo đối tượng Reservation
+        reservation = cls(
+            user=current_user,
+            movie=movie,
+            event_id=event_id,
+            date=date,
+            payment_method=payment_method
+        )
+        # Lưu đối tượng vào cơ sở dữ liệu
+        reservation.save()
+
+        return reservation
